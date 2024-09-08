@@ -1,0 +1,114 @@
+/* general page style */
+
+body {
+    font-family: Ysabeau SC, sans-serif;
+}
+
+h1,
+h3,
+h4,
+h5,
+h6 {
+    font-family: Exo, sans-serif;
+}
+
+
+.search_button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    font-family: Material Symbols Outlined, sans-serif;
+    color: azure;
+    font-size: 110%;
+}
+
+#search_box {
+    background-color: white;
+}
+
+
+
+#menuSelect {
+    color: white;
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+
+#menuSelect:hover,
+:focus {
+    background-color: transparent;
+    outline: none;
+}
+
+#menuSelect option {
+    background-color: rgb(5, 12, 35);
+}
+
+
+footer {
+
+    font-family: Ysabeau SC, sans-serif;
+
+    justify-content: center;
+    align-items: center;
+    bottom: 0;
+    font-size: small;
+    padding: 0.5cm;
+
+
+}
+
+/* Index page style */
+
+.slog2 {
+    font-family: Permanent Marker, cursive;
+    margin-top: 0;
+    font-size: 2.5em;
+}
+
+.slog1 {
+    font-size: 3em;
+}
+
+.slog1,
+.slog2 {
+    float: left;
+    clear: left;
+    margin-bottom: 0;
+}
+
+
+/* #ADD page button */
+
+.summit_clear {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}
+
+#submit_btn,
+#clear_btn {
+    padding: 10px 25px;
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    border-radius: 60px;
+    margin: 20px;
+}
+
+#submit_btn {
+    background-color: #0a0a0a;
+    color: white;
+}
+
+#clear_btn {
+    background-color: #f9fbfd;
+    color: rgb(5, 5, 5);
+    border: 1.5px solid black;
+}

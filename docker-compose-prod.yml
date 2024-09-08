@@ -1,0 +1,47 @@
+services:
+  nginx:
+    #build nginx from dockerfile config.
+    #this case simply bring up a default container from nginx official image.
+    build:
+      context: .
+      dockerfile: nginx/production/Dockerfile
+    #expose on port 80
+    ports:
+      - 80:80
+    networks:
+      - internal
+
+  php:
+    #build the app directory inside at the mounted location
+    build:
+      context: .
+      dockerfile: app/docker/production/Dockerfile
+    expose:
+      - 9000
+    networks:
+      - internal
+    #adjust owner and permission to the images directory (for image upload)
+    command: >
+      sh -c "chown www-data:www-data /var/www/html/src/gallery/images &&
+      chmod 755 /var/www/html/src/gallery/images &&
+      php-fpm"
+
+  db:
+    image: mariadb
+    volumes:
+      #bind mounted the local db/d_data/ directory as storage for maria-db.
+      - ./db/d_data:/var/lib/mysql
+      #executing init script during the initial configuration of the database instance.
+      #only run once, if no initial table created in database
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - internal
+    environment:
+      MYSQL_ROOT_PASSWORD: mariadb
+      MYSQL_DATABASE: hotel
+#could mount a docker-managed volume but data in this could not be shared as container being shared
+# volumes:
+#     data_sql:
+networks:
+  internal:
+    driver: bridge
